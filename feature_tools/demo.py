@@ -58,7 +58,12 @@ es = es.add_relationship(r_payments)
 features, feature_names = ft.dfs(entityset=es, target_entity='clients')
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width',4000)
-print(features.head(5))
+mapping = {"credit": 1, "home": 2, "cash": 3, "other": 4}
+features['MODE(loans.loan_type)'] = features['MODE(loans.loan_type)'].map(mapping)
+# print(type(features))
+# print(np.array(features))
+print(features.head(25))
+
 
 # 聚合特征，通过指定聚合agg_primitives和转换trans_primitives生成新特征
 features2, feature_names2 = ft.dfs(entityset=es, target_entity='clients',
