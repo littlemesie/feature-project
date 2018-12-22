@@ -11,6 +11,6 @@ def pca():
     ipca = PCA(n_components=10, copy=True)
     data = ipca.fit_transform(features)
     # da = ipca.inverse_transform(data)
-    print(data)
+    print(ipca.score_samples(features))
 
 pca()
